@@ -7,5 +7,5 @@
 - [x] Try integrating the date and time venue and toss status on top of the screen bar.
 - [x] Well relying on multiple sites for the same match was bad. Gotta click the carousel box to get to the match..
 - [ ] understand the OLED display code, i.e. `luma.core`, `luma.oled`
-- [ ] seperate score and wicket from the string via regex
-    
+- [x] seperate score and wicket from the string via regex
+- [ ] now try to to do this regex parsing for test score data
