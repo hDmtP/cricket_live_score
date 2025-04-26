@@ -4,6 +4,8 @@ import re
 from PIL import Image, ImageDraw, ImageFont
 import time, datetime
 
+import winsound
+
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
     "Cache-Control": "no-cache, no-store, must-revalidate",
@@ -58,7 +60,8 @@ def score_parser(s, key):
     try:
         curr = int(re.search(r'(\d+)-\d+', s).group(1))
         if (curr - prev[key]) >= 4:
-            print(f"BOUDARY ALERT! buzzer beeps at 700 Hz - {curr-prev[key]}")
+            print(f"BOUDARY ALERT! buzzer beeps at 500 Hz - {curr-prev[key]}")
+            winsound.Beep(500, 1000)
         prev[key] = curr
         print(prev[key])
     except:
@@ -69,6 +72,7 @@ def wicket_parser(s, key):
         curr = int(re.search(r'\d+-(\d+)', s).group(1))
         if (curr - prev[key]) >= 1:
             print(f"WICKET ALERT! buzzer beeps at 2000 Hz - {curr-prev[key]}")
+            winsound.Beep(2000, 2000)
         prev[key] = curr
         print(prev[key])
     except:
@@ -114,5 +118,6 @@ def show_all():
     image.show()
 
 while True:  
-    show_all()
+    # show_all()
+    get_live_score()
     time.sleep(60)
